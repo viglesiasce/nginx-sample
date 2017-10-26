@@ -10,10 +10,14 @@ image_resource:
 inputs:
 - name: app-source
 
+outputs:
+- name: app-version
+
 run:
   path: bash
   args:
   - -exc
   - |
-    cd app-source && git tag -l --points-at HEAD | tail -n1 > version
+    mkdir -p app-version
+    cd app-source && git tag -l --points-at HEAD | tail -n1 > ../app-version/version
     
